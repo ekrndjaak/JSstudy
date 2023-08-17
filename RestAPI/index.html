@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>방명록</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+    <h1>방명록</h1>
+    <form action="/" method="post">
+        <input type="text" name="message" placeholder="메시지를 입력하세요">
+        <button type="submit">전송</button>
+    </form>
+    <ul>
+        <% messages.forEach(function(message) { %>
+            <li><%= message %></li>
+        <% }); %>
+    </ul>
+</body>
+</html>

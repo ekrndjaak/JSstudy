@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>방명록</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  #guestbook {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  #messages {
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+  <div id="guestbook">
+    <h2>방명록</h2>
+    <form id="guestbookForm">
+      <label for="name">이름:</label>
+      <input type="text" id="name" required><br>
+      <label for="message">메시지:</label>
+      <textarea id="message" rows="4" required></textarea><br>
+      <button type="submit">제출</button>
+    </form>
+    <div id="messages"></div>
+  </div>
+
+  <script>
+    const guestbookForm = document.getElementById('guestbookForm');
+    const messagesDiv = document.getElementById('messages');
+
+    guestbookForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const nameInput = document.getElementById('name');
+      const messageInput = document.getElementById('message');
+
+      const name = nameInput.value;
+      const message = messageInput.value;
+
+      if (name.trim() === '' || message.trim() === '') {
+        alert('이름과 메시지를 모두 입력해주세요.');
+        return;
+      }
+
+      const messageElement = document.createElement('div');
+      messageElement.innerHTML = `<strong>${name}:</strong> ${message}`;
+      messagesDiv.appendChild(messageElement);
+
+      nameInput.value = '';
+      messageInput.value = '';
+    });
+  </script>
+</body>
+</html>
